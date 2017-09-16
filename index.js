@@ -13,9 +13,11 @@ var confirmRequestMedicineHandlers = Alexa.CreateStateHandler("_CONFIRM_REQUEST_
         this.emitWithState("ConfirmMedicineIntent");
     },
     'ConfirmMedicineIntent': function() {
-      this.handler.state = "_CONFIRM_MEDICINE";
+      this.handler.state = "_CONFIRM_PAYMENT_METHOD";
       console.log("current state is " + this.handler.state);
-      this.emit(":ask", "Let me check which pharmacy can deliver it today. By the way, my name is Smarty, not smarty-pants. May I suggest ibuprofen?");
+      this.emit(":ask",
+      'May I suggest ibuprofen. Let me check which pharmacy can deliver it today. By the way, my name is Smarty, not smarty-pants.' +
+      ' I have ordered it, would you like to pay in advance using your bank account?');
     },
     'AMAZON.NoIntent': function() {
       this.handler.state = "NONE";
@@ -26,26 +28,6 @@ var confirmRequestMedicineHandlers = Alexa.CreateStateHandler("_CONFIRM_REQUEST_
       this.emit(":ask", "Sorry Doora, I didn't understand you could you say that again");
     }
 });
-
-var confirmMedicineHandlers = Alexa.CreateStateHandler("_CONFIRM_MEDICINE", {
-    'AMAZON.YesIntent': function() {
-        this.emitWithState("PaymentOptionIntent");
-    },
-    'PaymentOptionIntent': function() {
-      this.handler.state = "_CONFIRM_PAYMENT_METHOD";
-      console.log("current state is " + this.handler.state);
-      this.emit(":ask", "I have ordered it, would you like to pay in advance using your bank account ?");
-    },
-    'AMAZON.NoIntent': function() {
-      this.handler.state = "NONE";
-      this.emit(":tell", "Fine. Take some rest." + recheckMsg);
-    },
-    'Unhandled': function() {
-      console.log("Can't understand user input " + this.handler.state);
-      this.emit(":ask", "Sorry Doora, I didn't understand you could you say that again");
-    }
-});
-
 
 var confirmPaymentMethods = Alexa.CreateStateHandler("_CONFIRM_PAYMENT_METHOD", {
     'AMAZON.YesIntent': function() {
@@ -83,7 +65,7 @@ var noneHandlers = Alexa.CreateStateHandler("_NONE", {
 var handlers = {
     'LaunchRequest': function () {
       this.handler.state = "_NONE";
-      this.emit(":ask", 'Dora, <break time="5s"/> how are you and how was the tea party last night?');
+      this.emit(":ask", 'Dora, how are you and how was the tea party last night?');
       console.log("current state is " + this.handler.state);
     },
     'Unhandled': function() {
@@ -94,6 +76,6 @@ var handlers = {
 
 exports.handler = function(event, context, callback) {
     var alexa = Alexa.handler(event, context, callback);
-    alexa.registerHandlers(confirmRequestMedicineHandlers, confirmMedicineHandlers, confirmPaymentMethods, noneHandlers, handlers);
+    alexa.registerHandlers(confirmRequestMedicineHandlers, confirmPaymentMethods, noneHandlers, handlers);
     alexa.execute();
 };
