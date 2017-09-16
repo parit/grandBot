@@ -1,0 +1,22 @@
+{
+  "name": "grandbot",
+  "version": "1.0.0",
+  "description": "Project for hackZurich 2017",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parit/grandBot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/parit/grandBot/issues"
+  },
+  "homepage": "https://github.com/parit/grandBot#readme",
+  "dependencies": {
+    "alexa-sdk": "^1.0.14"
+  }
+}
