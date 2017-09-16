@@ -1,0 +1,168 @@
+{
+  "intents": [
+    {
+      "name": "AMAZON.CancelIntent",
+      "samples": []
+    },
+    {
+      "name": "AMAZON.HelpIntent",
+      "samples": []
+    },
+    {
+      "name": "AMAZON.NoIntent",
+      "samples": []
+    },
+    {
+      "name": "AMAZON.PauseIntent",
+      "samples": []
+    },
+    {
+      "name": "AMAZON.ResumeIntent",
+      "samples": []
+    },
+    {
+      "name": "AMAZON.StopIntent",
+      "samples": []
+    },
+    {
+      "name": "AMAZON.YesIntent",
+      "samples": []
+    },
+    {
+      "name": "HelloWorldIntent",
+      "samples": [
+        "HelloWorld",
+        "Ask Smarty to say Hello World",
+        "Hello World"
+      ],
+      "slots": []
+    },
+    {
+      "name": "ReinDeerIntent",
+      "samples": [
+        "ReinDeer {ReinDeer}",
+        "Talk about {ReinDeer}",
+        "Tell me something about {ReinDeer}"
+      ],
+      "slots": [
+        {
+          "name": "ReinDeer",
+          "type": "LIST_OF_REINDEER",
+          "samples": []
+        }
+      ]
+    },
+    {
+      "name": "Test",
+      "samples": [
+        "How much money i have on my account",
+        "Check my bank account"
+      ],
+      "slots": []
+    },
+    {
+      "name": "TestingIntent",
+      "samples": [
+        "Check the testing intent",
+        "testing"
+      ],
+      "slots": []
+    }
+  ],
+  "types": [
+    {
+      "name": "LIST_OF_REINDEER",
+      "values": [
+        {
+          "id": null,
+          "name": {
+            "value": "Dasher",
+            "synonyms": []
+          }
+        },
+        {
+          "id": null,
+          "name": {
+            "value": "Dancer",
+            "synonyms": []
+          }
+        },
+        {
+          "id": null,
+          "name": {
+            "value": "Prancer",
+            "synonyms": []
+          }
+        },
+        {
+          "id": null,
+          "name": {
+            "value": "Vixen",
+            "synonyms": []
+          }
+        },
+        {
+          "id": null,
+          "name": {
+            "value": "Comet",
+            "synonyms": []
+          }
+        },
+        {
+          "id": null,
+          "name": {
+            "value": "Cupid",
+            "synonyms": []
+          }
+        },
+        {
+          "id": null,
+          "name": {
+            "value": "Donner",
+            "synonyms": []
+          }
+        },
+        {
+          "id": null,
+          "name": {
+            "value": "Blitzen",
+            "synonyms": []
+          }
+        },
+        {
+          "id": null,
+          "name": {
+            "value": "Rudolph",
+            "synonyms": []
+          }
+        },
+        {
+          "id": null,
+          "name": {
+            "value": "Olive",
+            "synonyms": []
+          }
+        }
+      ]
+    }
+  ],
+  "dialog": {
+    "version": "1.0",
+    "intents": [
+      {
+        "name": "ReinDeerIntent",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": [
+          {
+            "name": "ReinDeer",
+            "type": "LIST_OF_REINDEER",
+            "elicitationRequired": true,
+            "confirmationRequired": false,
+            "prompts": {}
+          }
+        ]
+      }
+    ]
+  }
+}
